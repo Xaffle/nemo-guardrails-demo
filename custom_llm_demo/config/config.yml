@@ -1,6 +1,6 @@
-models:
-  - type: main
-    engine: custom_llm
+# models:
+#   - type: main
+#     engine: custom_llm  
 
 # 一般说明: 一般说明（类似于系统提示符）会附加到每个提示符的开头，您可以按如下所示对其进行配置
 instructions:
