@@ -112,3 +112,6 @@ class MyCustomLLM(BaseLLM):
             generations.append([Generation(text=text)])
             
         return LLMResult(generations=generations)
+    
+from nemoguardrails.llm.providers import register_llm_provider
+register_llm_provider("custom_llm", MyCustomLLM)

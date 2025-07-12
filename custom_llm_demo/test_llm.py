@@ -1,19 +1,21 @@
 from nemoguardrails import LLMRails, RailsConfig
 from llm_providers.custom_llm import MyCustomLLM
+import os
 
 def main():
     # 1. 首先创建 LLM 实例
     llm = MyCustomLLM(
-        endpoint_url="your-llm-endpoint-url",
-        model_name="your-llm-model-name",
-        headers={
-            "Content-Type": "your-content-type",
-            "Authorization": "your-llm-api-key"
+        model_name="qwen-plus-2025-01-25",
+        endpoint_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+        api_key=os.getenv("DASHSCOPE_API_KEY"),
+        temperature=0.7,
+        extra_body={
+            "enable_thinking": False
         }
     )
 
     # 2. 创建 Rails 实例
-    config = RailsConfig.from_path("./config")
+    config = RailsConfig.from_path("./custom_llm_demo/config")
     rails = LLMRails(config, llm=llm)
 
     # 3. 测试对话
